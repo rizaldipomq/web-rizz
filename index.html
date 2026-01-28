@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteShop | Toko Online Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #4a6de5;
+            --primary-dark: #3a5bc7;
+            --secondary: #f8f9fa;
+            --accent: #ff6b6b;
+            --accent-light: #ff8e8e;
+            --dark: #1a1d28;
+            --darker: #12141c;
+            --light: #ffffff;
+            --success: #28a745;
+            --warning: #ffc107;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #eef2f6 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--darker);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--light);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info span {
+            margin-right: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .auth-links a {
+            color: var(--light);
+            text-decoration: none;
+            margin-left: 15px;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .auth-links a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            background: var(--primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(74, 109, 229, 0.4);
+        }
+
+        .logo-icon i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 600px;
+            margin: 0 30px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 14px 25px;
+            border-radius: 50px;
+            border: none;
+            font-size: 15px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-bar input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            color: var(--primary);
+            padding: 9px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar button:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icon-box {
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .icon-box:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .icon-box i {
+            font-size: 22px;
+        }
+
+        .icon-box span {
+            display: block;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .cart-count {
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            position: absolute;
+            top: -5px;
+            right: 0;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 18px 22px;
+            display: block;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 70%;
+        }
+
+        .nav-links .dropdown {
+            position: absolute;
+            background-color: white;
+            box-shadow: var(--shadow);
+            min-width: 220px;
+            display: none;
+            z-index: 100;
+            border-radius: 12px;
+            overflow: hidden;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-links li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            color: var(--dark);
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown a:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+
+        .dropdown a:hover:after {
+            display: none;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(120deg, rgba(26, 29, 40, 0.9) 0%, rgba(58, 91, 199, 0.8) 100%), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.03" d="M0,128L48,138.7C96,149,192,171,288,165.3C384,160,480,128,576,133.3C672,139,768,181,864,181.3C960,181,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 40px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            gap: 10px;
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+
+        .btn i {
+            font-size: 18px;
+        }
+
+        /* Categories Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            transform: translateY(-100%);
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .category-card:hover:before {
+            transform: translateY(0);
+        }
+
+        .category-card i {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .category-card:hover i {
+            transform: scale(1.1);
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .category-card p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Featured Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+        }
+
+        .product-badge.new {
+            background: var(--primary);
+        }
+
+        .product-image {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-actions {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            transition: var(--transition);
+            transform: translateY(10px);
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .current-price {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .old-price {
+            font-size: 16px;
+            color: #aaa;
+            text-decoration: line-through;
+        }
+
+        .discount {
+            background-color: var(--warning);
+            color: var(--dark);
+            font-size: 13px;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stars {
+            color: var(--warning);
+            margin-right: 10px;
+            font-size: 15px;
+        }
+
+        .rating-count {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(74, 109, 229, 0.4);
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(74, 109, 229, 0.6);
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            background: linear-gradient(95deg, #4a6de5 0%, #6a4de5 100%);
+            border-radius: 20px;
+            padding: 50px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .promo-banner:after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .promo-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .promo-content p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .timer {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .timer-box {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 80px;
+            backdrop-filter: blur(5px);
+        }
+
+        .timer-value {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .timer-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .promo-image {
+            position: relative;
+            z-index: 2;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: rotate(3deg);
+            transition: var(--transition);
+        }
+
+        .promo-image:hover {
+            transform: rotate(0) scale(1.05);
+        }
+
+        .promo-image img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f6 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial {
+            min-width: 100%;
+            padding: 0;
+            transition: transform 0.5s;
+            display: flex;
+        }
+
+        .testimonial-image {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .testimonial-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-content {
+            flex: 1;
+            background: white;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 30px;
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .testimonial-text:before {
+            content: '\201C';
+            font-size: 5rem;
+            position: absolute;
+            top: -30px;
+            left: -20px;
+            color: var(--primary);
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .author-role {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .rating-large {
+            color: var(--warning);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .slider-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, rgba(26, 29, 40, 0.95) 0%, rgba(58, 91, 199, 0.9) 100%), url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .newsletter:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%234a6de5" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,170.7C384,181,480,171,576,149.3C672,128,768,96,864,106.7C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .newsletter p {
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 18px 30px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .newsletter-form button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--accent-light);
+            padding: 0 45px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            color: #eee;
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-wave {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .footer-wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+
+        .footer-wave .shape-fill {
+            fill: #f8f9fa;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-column h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 10px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .contact-list li {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-list i {
+            color: var(--primary);
+            margin-right: 15px;
+            min-width: 20px;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .contact-list span {
+            flex: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 0;
+            text-align: center;
+            font-size: 15px;
+            color: #aaa;
+            position: relative;
+            z-index: 2;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .payment-method {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .testimonial {
+                flex-direction: column;
+            }
+            
+            .testimonial-image {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .main-header {
+                flex-wrap: wrap;
+            }
+            
+            .search-bar {
+                order: 3;
+                margin: 20px 0 0;
+                max-width: 100%;
+            }
+            
+            .promo-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 30px;
+            }
+            
+            .promo-content {
+                margin-bottom: 40px;
+            }
+            
+            .promo-image {
+                max-width: 100%;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .timer {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                border-radius: 12px;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 12px;
+                padding: 16px;
+                text-align: center;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            
+            .auth-links {
+                margin-top: 5px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .promo-banner {
+                padding: 30px 20px;
+            }
+            
+            .timer-box {
+                min-width: 70px;
+                padding: 12px;
+            }
+            
+            .footer-content {
+                gap: 30px;
+            }
+        }
+
+        /* Animation */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +62 21 1234 5678</span>
+                    <span><i class="fas fa-envelope"></i> info@eliteshop.id</span>
+                </div>
+                <div class="auth-links">
+                    <a href="#"><i class="fas fa-user-plus"></i> Daftar</a>
+                    <a href="#"><i class="fas fa-sign-in-alt"></i> Masuk</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="main-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>EliteShop</h1>
+                        <span>PREMIUM ONLINE STORE</span>
+                    </div>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari produk premium, merek eksklusif...">
+                    <button><i class="fas fa-search"></i> Cari</button>
+                </div>
+                
+                <div class="header-icons">
+                    <div class="icon-box">
+                        <i class="fas fa-heart"></i>
+                        <span>Favorit</span>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-user"></i>
+                        <span>Akun</span>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Keranjang</span>
+                        <span class="cart-count">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="container nav-container">
+                <ul class="nav-links">
+                    <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li>
+                        <a href="#"><i class="fas fa-th-large"></i> Kategori <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#"><i class="fas fa-mobile-alt"></i> Elektronik Premium</a>
+                            <a href="#"><i class="fas fa-tshirt"></i> Fashion Eksklusif</a>
+                            <a href="#"><i class="fas fa-home"></i> Perabotan Desainer</a>
+                            <a href="#"><i class="fas fa-spa"></i> Kecantikan Luxury</a>
+                            <a href="#"><i class="fas fa-gem"></i> Aksesoris Eksklusif</a>
+                        </div>
+                    </li>
+                    <li><a href="#"><i class="fas fa-fire"></i> Produk Terbaru</a></li>
+                    <li><a href="#"><i class="fas fa-percent"></i> Diskon Spesial</a></li>
+                    <li><a href="#"><i class="fas fa-star"></i> Koleksi Premium</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="nav-btn"><i class="fas fa-gift"></i> Voucher</button>
+                    <button class="nav-btn"><i class="fas fa-headset"></i> Dukungan</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Pengalaman Belanja Premium Terbaik</h2>
+            <p>Temukan produk eksklusif dari merek-merek ternama dengan kualitas terbaik dan pelayanan premium</p>
+            
+            <div class="hero-btns">
+                <a href="#" class="btn"><i class="fas fa-shopping-bag"></i> Belanja Sekarang</a>
+                <a href="#" class="btn btn-outline"><i class="fas fa-crown"></i> Lihat Koleksi Eksklusif</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Kategori Premium</h2>
+                <p class="section-subtitle">Jelajahi koleksi eksklusif kami yang dipilih khusus untuk Anda</p>
+            </div>
+            
+            <div class="categories">
+                <div class="category-card">
+                    <i class="fas fa-laptop"></i>
+                    <h3>Teknologi Premium</h3>
+                    <p>Gadget & elektronik high-end</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Fashion Luxury</h3>
+                    <p>Brand ternama & desainer</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Perabotan Desainer</h3>
+                    <p>Furniture eksklusif</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-spa"></i>
+                    <h3>Kecantikan Premium</h3>
+                    <p>Skincare & kosmetik luxury</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-wine-bottle"></i>
+                    <h3>Minuman Eksklusif</h3>
+                    <p>Wine & minuman premium</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Aksesoris Mewah</h3>
+                    <p>Perhiasan & jam tangan</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-car"></i>
+                    <h3>Otomotif Premium</h3>
+                    <p>Aksesori kendaraan eksklusif</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-gift"></i>
+                    <h3>Hadiah Eksklusif</h3>
+                    <p>Paket hadiah premium</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Produk Unggulan</h2>
+                <p class="section-subtitle">Produk terbaik dari koleksi eksklusif kami</p>
+            </div>
+            
+            <div class="products">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge">Diskon 25%</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Smart Watch">
+                        <div class="product-actions">
+                            <div class="action-btn"><i class="fas fa-heart"></i></div>
+                            <div class="action-btn"><i class="fas fa-search"></i></div>
+                            <div class="action-btn"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Elektronik Premium</div>
+                        <div class="product-title">Luxury Smart Watch Pro Series - Limited Edition</div>
+                        <div class="product-price">
+                            <div class="current-price">Rp 4.299.000</div>
+                            <div class="old-price">Rp 5.599.000</div>
+                            <div class="discount">25% OFF</div>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="rating-count">(128 reviews)</div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> + Keranjang Premium</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge new">Baru</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Headphone">
+                        <div class="product-actions">
+                            <div class="action-btn"><i class="fas fa-heart"></i></div>
+                            <div class="action-btn"><i class="fas fa-search"></i></div>
+                            <div class="action-btn"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Audio Premium</div>
+                        <div class="product-title">Wireless Headphone Platinum Edition - Noise Cancelling</div>
+                        <div class="product-price">
+                            <div class="current-price">Rp 3.499.000</div>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="rating-count">(94 reviews)</div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> + Keranjang Premium</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sepatu">
+                        <div class="product-actions">
+                            <div class="action-btn"><i class="fas fa-heart"></i></div>
+                            <div class="action-btn"><i class="fas fa-search"></i></div>
+                            <div class="action-btn"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Fashion Luxury</div>
+                        <div class="product-title">Designer Sneakers Limited Edition - Handmade in Italy</div>
+                        <div class="product-price">
+                            <div class="current-price">Rp 2.899.000</div>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="rating-count">(67 reviews)</div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> + Keranjang Premium</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-badge">Diskon 30%</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Headphone">
+                        <div class="product-actions">
+                            <div class="action-btn"><i class="fas fa-heart"></i></div>
+                            <div class="action-btn"><i class="fas fa-search"></i></div>
+                            <div class="action-btn"><i class="fas fa-shopping-cart"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Audio Premium</div>
+                        <div class="product-title">Premium Bluetooth Speaker - Gold Edition with Diamond Accents</div>
+                        <div class="product-price">
+                            <div class="current-price">Rp 5.999.000</div>
+                            <div class="old-price">Rp 8.499.000</div>
+                            <div class="discount">30% OFF</div>
+                        </div>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="rating-count">(45 reviews)</div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> + Keranjang Premium</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="section">
+        <div class="container">
+            <div class="promo-banner">
+                <div class="promo-content">
+                    <h3>Grand Opening Sale! Diskon Hingga 70%</h3>
+                    <p>Perayaan pembukaan toko premium kami! Dapatkan produk eksklusif dengan harga spesial untuk 100 pembeli pertama.</p>
+                    
+                    <div class="timer">
+                        <div class="timer-box">
+                            <div class="timer-value" id="days">05</div>
+                            <div class="timer-label">Hari</div>
+                        </div>
+                        <div class="timer-box">
+                            <div class="timer-value" id="hours">12</div>
+                            <div class="timer-label">Jam</div>
+                        </div>
+                        <div class="timer-box">
+                            <div class="timer-value" id="minutes">45</div>
+                            <div class="timer-label">Menit</div>
+                        </div>
+                        <div class="timer-box">
+                            <div class="timer-value" id="seconds">30</div>
+                            <div class="timer-label">Detik</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn"><i class="fas fa-gift"></i> Dapatkan Promo</a>
+                </div>
+                <div class="promo-image floating">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Promo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Testimonial Eksklusif</h2>
+                <p class="section-subtitle">Apa kata pelanggan premium kami</p>
+            </div>
+            
+            <div class="testimonial-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <div class="testimonial-image">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Customer">
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="rating-large">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Saya sudah belanja di berbagai toko online premium, tapi pengalaman di EliteShop benar-benar berbeda. Pelayanannya sangat personal, produknya orisinal dan berkualitas tinggi, serta pengiriman sangat cepat dengan packaging yang mewah."</p>
+                            <div class="testimonial-author">
+                                <div class="author-name">Sarah Wijaya</div>
+                                <div class="author-role">CEO Luxury Group</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Bergabung dengan Komunitas Premium</h2>
+                <p>Dapatkan akses eksklusif ke produk terbaru, promo khusus member, dan event private hanya untuk pelanggan premium kami.</p>
+                
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Masukkan email premium Anda" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Berlangganan Sekarang</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EliteShop Premium</h3>
+                    <p style="color: #aaa; line-height: 1.7; margin-bottom: 20px;">Toko online premium dengan produk eksklusif dan pelayanan terbaik. Kami menyediakan pengalaman belanja kelas atas untuk pelanggan yang menghargai kualitas.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Layanan Premium</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-crown"></i> Personal Shopper</a></li>
+                        <li><a href="#"><i class="fas fa-gift"></i> Hadiah Eksklusif</a></li>
+                        <li><a href="#"><i class="fas fa-shipping-fast"></i> Pengiriman Prioritas</a></li>
+                        <li><a href="#"><i class="fas fa-undo"></i> Pengembangan Premium</a></li>
+                        <li><a href="#"><i class="fas fa-headset"></i> Dukungan VIP 24/7</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Informasi</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-info-circle"></i> Tentang Kami</a></li>
+                        <li><a href="#"><i class="fas fa-blog"></i> Blog Premium</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Store Location</a></li>
+                        <li><a href="#"><i class="fas fa-tag"></i> Voucher Eksklusif</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Hubungi Kami</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Plaza Kuningan, Jl. HR Rasuna Said Kav. C22, Jakarta 12940</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+62 21 1500 700</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>vip@eliteshop.id</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Setiap Hari: 08.00 - 22.00 WIB</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <i class="fab fa-cc-visa"></i> Visa
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-cc-mastercard"></i> MasterCard
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-cc-paypal"></i> PayPal
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-mobile-alt"></i> Gopay
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-wallet"></i> OVO
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 EliteShop Premium. Hak Cipta Dilindungi. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Timer countdown
+        function updateTimer() {
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+            
+            let days = parseInt(daysElement.textContent);
+            let hours = parseInt(hoursElement.textContent);
+            let minutes = parseInt(minutesElement.textContent);
+            let seconds = parseInt(secondsElement.textContent);
+            
+            seconds--;
+            
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+                
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                    
+                    if (hours < 0) {
+                        hours = 23;
+                        days--;
+                        
+                        if (days < 0) {
+                            days = 5;
+                            hours = 12;
+                            minutes = 45;
+                            seconds = 30;
+                        }
+                    }
+                }
+            }
+            
+            daysElement.textContent = days.toString().padStart(2, '0');
+            hoursElement.textContent = hours.toString().padStart(2, '0');
+            minutesElement.textContent = minutes.toString().padStart(2, '0');
+            secondsElement.textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateTimer, 1000);
+        
+        // Add to cart functionality
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartCount = document.querySelector('.cart-count');
+        let count = 3;
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                count++;
+                cartCount.textContent = count;
+                
+                // Add animation effect
+                const originalText = this.innerHTML;
+                this.innerHTML = "<i class='fas fa-check'></i> Ditambahkan";
+                this.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.background = 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)';
+                }, 2000);
+            });
+        });
+        
+        // Slider functionality
+        const dots = document.querySelectorAll('.slider-dot');
+        
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                dots.forEach(d => d.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Floating animation
+        const floatingElements = document.querySelectorAll('.floating');
+        floatingElements.forEach(el => {
+            el.style.animationDelay = `${Math.random() * 2}s`;
+        });
+    </script>
+</body>
+</html>
